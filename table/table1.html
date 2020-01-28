@@ -1,0 +1,307 @@
+<html>
+<head>
+    <title>Draggable, Moveable and Resizable DIV using jQuery</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+
+<style>
+
+.heading_row {background:#e5edf1; margin-bottom:10px; white-space:nowrap;}
+.colmain {float:left; width:300px;}
+.col {float:left; width:200px;}
+.container{border:2px solid red;height: 500px;overflow: none;position: fixed;overflow: hidden;}
+
+.outerDiv {
+  width: 500px;
+  height: 100px;
+}
+
+.heading_row {
+  width: 1000px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="outerDiv">
+<div class="container">
+	 <div class="row heading_row">
+	 	<div class="col">Column1    
+	 		<ul>
+	 			<li>Drag Data</li>
+        		<li id="Col1posX"></li>
+        		<li id="Col1posY"></li>
+        		<li>Resize Data</li>
+        		<li id="RCol1posX"></li>
+        		<li id="RCol1posY"></li>
+    		</ul>
+		</div>
+		<div class="col">Column2
+			<ul>
+				<li>Drag Data</li>
+        		<li id="Col2posX"></li>
+        		<li id="Col2posY"></li>
+        		<li>Resize Data</li>
+        		<li id="RCol2posX"></li>
+        		<li id="RCol2posY"></li>
+    		</ul>
+    	</div>
+		<div class="col">Column3
+	 		<ul>
+	 			<li>Drag Data</li>
+        		<li id="Col3posX"></li>
+        		<li id="Col3posY"></li>
+        		<li>Resize Data</li>
+        		<li id="RCol3posX"></li>
+        		<li id="RCol3posY"></li>
+    		</ul>
+		</div>
+		<div class="col">Column4
+	 		<ul>
+	 			<li>Drag Data</li>
+        		<li id="Col4posX"></li>
+        		<li id="Col4posY"></li>
+        		<li>Resize Data</li>
+        		<li id="RCol4posX"></li>
+        		<li id="RCol4posY"></li>
+    		</ul>
+		</div>
+		<div class="col">Column5
+			<ul>
+				<li>Drag Data</li>
+        		<li id="Col5posX"></li>
+        		<li id="Col5posY"></li>
+        		<li>Resize Data</li>
+        		<li id="RCol5posX"></li>
+        		<li id="RCol5posY"></li>
+    		</ul>
+    	</div>
+	 </div>
+
+    <div class="row">
+        <div class="col-xs-2" style="background-color:lavender;" id="p1">
+        	<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+			<div class="col">Column1</div>
+		</div>
+
+        <div class="col-xs-2 col-half-offset" style="background-color:lavenderblush;" id="p2">
+        	<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+			<div class="col">Column2</div>
+        </div>
+        
+        <div class="col-xs-2 col-half-offset" style="background-color:lavender;" id="p3">
+        	<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+			<div class="col">Column3</div>
+        </div>
+        
+        <div class="col-xs-2 col-half-offset"  style="background-color:lavenderblush;" id="p4">        	
+        	<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+			<div class="col">Column4</div>
+		</div>
+        
+        <div class="col-xs-2 col-half-offset" style="background-color:lavender;" id="p5">
+        	<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+			<div class="col">Column5</div>
+        </div>
+    </div>
+
+</div>
+</div>
+   
+</body>
+<script>
+    $(document).ready(function() {
+    	$('#outerDiv').scrollLeft(300);
+		$('#outerDiv').scrollTop(50);
+        
+        $(function() 
+        	{ $("#p1").draggable(
+        	{
+        		 drag: function(){
+		            var offset = $(this).offset();
+		            var xPos = offset.left;
+		            var yPos = offset.top;
+		            $('#Col1posX').text('x: ' + xPos);
+		            $('#Col1posY').text('y: ' + yPos);
+        		}
+        	})
+        	.resizable(
+	        	{
+					start: function(e, ui) {
+						console.log('resizing started');
+						console.log(ui);
+						console.log(e);
+					},
+					resize: function(e, ui) {
+						  $('#RCol1posX').html( 'inner: ' + $(this).width() + ' x '+ $(this).height() +'outer: ' + $(this).outerWidth() + ' x '+ $(this).outerHeight());
+					},
+					stop: function(e, ui) {
+						console.log('resizing stopped');
+						console.log(ui);
+						console.log(e);
+					}
+				});
+	 		});
+
+        $(function() 
+        	{ $("#p2").draggable(
+        	{
+        		 drag: function(){
+		            var offset = $(this).offset();
+		            var xPos = offset.left;
+		            var yPos = offset.top;
+		            $('#Col2posX').text('x: ' + xPos);
+		            $('#Col2posY').text('y: ' + yPos);
+        		}
+        	})
+        	.resizable(
+	        	{
+					start: function(e, ui) {
+						console.log('resizing started');
+						console.log(ui);
+						console.log(e);
+					},
+					resize: function(e, ui) {
+						  $('#RCol2posX').html( 'inner: ' + $(this).width() + ' x '+ $(this).height() +'outer: ' + $(this).outerWidth() + ' x '+ $(this).outerHeight());
+					},
+					stop: function(e, ui) {
+						console.log('resizing stopped');
+						console.log(ui);
+						console.log(e);
+					}
+				});
+	 		});
+
+        $(function() 
+        	{ $("#p3").draggable(
+        	{
+        		 drag: function(){
+		            var offset = $(this).offset();
+		            var xPos = offset.left;
+		            var yPos = offset.top;
+		            $('#Col3posX').text('x: ' + xPos);
+		            $('#Col3posY').text('y: ' + yPos);
+        		}
+        	})
+        	.resizable(
+	        	{
+					start: function(e, ui) {
+						console.log('resizing started');
+						console.log(ui);
+						console.log(e);
+					},
+					resize: function(e, ui) {
+						  $('#RCol3posX').html( 'inner: ' + $(this).width() + ' x '+ $(this).height() +'outer: ' + $(this).outerWidth() + ' x '+ $(this).outerHeight());
+					},
+					stop: function(e, ui) {
+						console.log('resizing stopped');
+						console.log(ui);
+						console.log(e);
+					}
+				});
+	 		});
+
+        $(function() 
+        	{ $("#p4").draggable(
+        	{
+        		 drag: function(){
+		            var offset = $(this).offset();
+		            var xPos = offset.left;
+		            var yPos = offset.top;
+		            $('#Col4posX').text('x: ' + xPos);
+		            $('#Col4posY').text('y: ' + yPos);
+        		}
+        	})
+        	.resizable(
+	        	{
+					start: function(e, ui) {
+						console.log('resizing started');
+						console.log(ui);
+						console.log(e);
+					},
+					resize: function(e, ui) {
+						  $('#RCol4posX').html( 'inner: ' + $(this).width() + ' x '+ $(this).height() +'outer: ' + $(this).outerWidth() + ' x '+ $(this).outerHeight());
+					},
+					stop: function(e, ui) {
+						console.log('resizing stopped');
+						console.log(ui);
+						console.log(e);
+					}
+				});
+	 		});
+
+        $(function() 
+        	{ $("#p5").draggable(
+        	{
+        		 drag: function(){
+		            var offset = $(this).offset();
+		            var xPos = offset.left;
+		            var yPos = offset.top;
+		            $('#Col5posX').text('x: ' + xPos);
+		            $('#Col5posY').text('y: ' + yPos);
+        		}
+        	})
+        	.resizable(
+	        	{
+					start: function(e, ui) {
+						console.log('resizing started');
+						console.log(ui);
+						console.log(e);
+					},
+					resize: function(e, ui) {
+						  $('#RCol5posX').html( 'inner: ' + $(this).width() + ' x '+ $(this).height() +'outer: ' + $(this).outerWidth() + ' x '+ $(this).outerHeight());
+					},
+					stop: function(e, ui) {
+						console.log('resizing stopped');
+						console.log(ui);
+						console.log(e);
+					}
+				});
+	 		});
+
+    });
+</script>
+</html>

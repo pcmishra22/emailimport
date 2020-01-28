@@ -1,0 +1,119 @@
+<style>
+#container {margin:50px auto; overflow-x:scroll; width:800px;cursor:move; 
+            float:left }
+.heading_row {background:#e5edf1; margin-bottom:10px; white-space:nowrap;}
+.colmain {float:left; width:300px;}
+.col {float:left; width:100px;}
+.body_row {background:#f6f9fa;}
+.clr {clear:both;}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+<script src="jquery.dragtable.js"></script>
+
+
+
+
+<div id="container">
+	<div class="heading_row">
+		
+		<div class="col">Column1</div>
+		<div class="col">Column2</div>
+		<div class="col">Column3</div>
+		<div class="col">Column4</div>
+		<div class="col">Column5</div>
+		<div class="col">Column6</div>
+		<div class="col">Column7</div>
+		<div class="col">Column8</div>
+		<div class="clr"></div>
+	</div>
+	
+	<div class="body_row">
+		<div class="colmain">Main Text</div>
+		<div class="col">Text1</div>
+		<div class="col">Text1</div>
+		<div class="col">Text1</div>
+		<div class="col">Text1</div>
+		<div class="col">Text1</div>
+		<div class="col">Text1</div>
+		<div class="col">Text1</div>
+		<div class="clr"></div>
+	</div>	
+	<div class="body_row">
+		<div class="colmain">Main Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="clr"></div>
+	</div>	
+	<div class="body_row">
+		<div class="colmain">Main Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="clr"></div>
+	</div>	
+	<div class="body_row">
+		<div class="colmain">Main Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="col">Text</div>
+		<div class="clr"></div>
+	</div>	
+	
+	
+</div>
+
+
+<html>
+<head>
+    <title>Draggable, Moveable and Resizable DIV using jQuery</title>
+    
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        #divContainer, #divResize { 
+            border:dashed 1px #CCC; 
+            width:120px; 
+            height:120px; 
+            padding:5px; 
+            margin:5px; 
+            font:13px Arial; 
+            cursor:move; 
+            float:left 
+        } 
+    </style>
+</head>
+<body>
+    <div>
+
+
+
+        <div id="divResize">
+            I am Draggable and Resizable 
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function() {
+        $(function() { $("#divResize").draggable().resizable(); });
+
+    });
+</script>
+</html>
